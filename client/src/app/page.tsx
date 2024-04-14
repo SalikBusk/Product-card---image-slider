@@ -46,7 +46,7 @@ const ProductsItems = [
     ],
     name: "Nuuk Icefjord Hike ", 
     label: "Nuuk",
-    price: "100$",
+    price: "2.300 DKK",
   },
   {
     id: 3,
