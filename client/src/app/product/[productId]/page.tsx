@@ -12,11 +12,6 @@ interface PageProps {
   };
 }
 
-const BREADCRUMBS = [
-  { id: 1, name: "Home", href: "/" },
-  { id: 2, name: "Products", href: "/Products" },
-];
-
 const Page = ({ params }: PageProps) => {
   // Find the product based on productId
   const product = ProductsItems.find(
@@ -25,14 +20,21 @@ const Page = ({ params }: PageProps) => {
 
   if (!product) return notFound();
 
-  const validUrls = product.images.map((image) =>
-    typeof image === "string" ? image : image.url
-  ).filter(Boolean) as string[];
+  const validUrls = product.images
+    .map((image) => (typeof image === "string" ? image : image.url))
+    .filter(Boolean) as string[];
 
   // Filter products with the same label
   const similarProducts = ProductsItems.filter(
     (item) => item.label === product.label && item.id !== product.id
   );
+
+  const BREADCRUMBS = [
+    { id: 1, name: "Home", href: "/" },
+    { id: 2, name: "Products", href: "/Products" },
+    { id: 3, name: `${product.category}`, href: `/product/${product.id}` },
+    { id: 4, name: `${product.name}`, href: `/product/${product.id}` },
+  ];
 
   return (
     <div>
@@ -41,7 +43,7 @@ const Page = ({ params }: PageProps) => {
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-10 lg:grid lg:max-w-7xl  lg:gap-x-8 lg:px-8">
             {/* Product details */}
             <div className="w-full">
-              <ol className="flex items-center space-x-2">
+              <ol className="hidden md:flex items-center space-x-2">
                 {BREADCRUMBS.map((breadcrumb, i) => (
                   <li key={breadcrumb.href}>
                     <div className="flex items-center text-sm">
@@ -76,27 +78,24 @@ const Page = ({ params }: PageProps) => {
               {/* Product images */}
               <section className="w-full h-[70vh] mt-10">
                 <div className="aspect-square rounded-lg w-full">
-                  <ProductHero images={product.images}/>
+                  <ProductHero images={product.images} />
                 </div>
               </section>
 
               <section className="mt-10 w-full flex flex-row gap-5">
-                <div className="w-2/3">
+                <div className="w-2/3 md:border-r md:border-gray-300">
+                  <div className="flex items-center md:border-b md:border-gray-300 py-2">
+                    <p className="font-medium text-gray-900">{product.name}</p>
 
-                  <div className="flex items-center border-b border-gray-300 py-2">
-                    <p className="font-medium text-gray-900">
-                      {product.name}
-                    </p>
-
-                  <div className="ml-4 border-l text-muted-foreground border-gray-300 pl-4">
-                    {product.label}
+                    <div className="ml-4 border-l text-muted-foreground border-gray-300 pl-4">
+                      {product.label}
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-4 space-y-6">
-                  <p className="text-base text-muted-foreground">
-                    {product.description}
-                  </p>
+                  <div className="mt-4 space-y-6">
+                    <p className="text-base text-muted-foreground">
+                      {product.description}
+                    </p>
                   </div>
                 </div>
 
