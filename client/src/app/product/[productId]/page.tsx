@@ -80,9 +80,10 @@ const Page = ({ params }: PageProps) => {
                 </div>
               </section>
 
-              <section className="mt-10 w-full flex flex-row gap-2">
+              <section className="mt-10 w-full flex flex-row gap-5">
                 <div className="w-2/3">
-                  <div className="flex items-center rounded-xl bg-gray-200 p-5">
+
+                  <div className="flex items-center border-b border-gray-300 py-2">
                     <p className="font-medium text-gray-900">
                       {product.name}
                     </p>
@@ -100,7 +101,7 @@ const Page = ({ params }: PageProps) => {
                 </div>
 
                 <div className="w-1/2 h-auto rounded-xl bg-gray-200 p-5 flex-1">
-                  <p className="text-3xl font-bold tracking-tighter text-gray-900 sm:text-4xl ">
+                  <p className="text-3xl font-smibold tracking-tighter text-gray-900 sm:text-4xl text-center">
                     {product.price}
                   </p>
                 </div>
