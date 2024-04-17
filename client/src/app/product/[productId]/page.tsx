@@ -1,10 +1,12 @@
+"use client"
+
 import MaxWidthWrapper from "@/Components/MaxWidthWrapper";
 import Link from "next/link";
 import { ProductsItems } from "@/config/index";
 import ImageSlider from "@/Components/listing/ImageSlider";
 import ProductReel from "@/Components/listing/ProductReel";
 import { notFound } from "../../../../node_modules/next/navigation";
-import ProductHero from "@/Components/listing/Product/ProductHero";
+import ProductHero from "@/Components/Product/ProductHero";
 
 interface PageProps {
   params: {

@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { Button } from "@/Components/ui/button";
+import { DragCloseDrawer } from "./DragDrawer";
 
 interface ImageData {
   id: number;
@@ -10,10 +12,12 @@ interface ImageData {
 
 interface ProductHeroProps {
   images: ImageData[];
+  searchParams: Record<string, string> | null | undefined;
 }
 
-const ProductHero = ({ images }: ProductHeroProps) => {
+const ProductHero = ({ images, searchParams }: ProductHeroProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
+  const show = searchParams?.show;
   
 
   const handleSmallImageClick = (image: ImageData) => {
@@ -32,7 +36,7 @@ const ProductHero = ({ images }: ProductHeroProps) => {
 
   return (
     <>
-      <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-[10px] h-[70vh] w-full overflow-hidden ">
+      <section className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-[10px] h-[70vh] w-full overflow-hidden ">
         {/* Big Image */}
         <main className="w-full overflow-hidden relative">
           <div className="overflow-hidden">
@@ -65,6 +69,10 @@ const ProductHero = ({ images }: ProductHeroProps) => {
             </div>
           ))}
         </main>
+        {/* modal knap */}
+        <div className="absolute right-0 bottom-0 p-2">
+          <DragCloseDrawer/>
+      </div>
       </section>
     </>
   );
