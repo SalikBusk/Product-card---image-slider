@@ -9,33 +9,6 @@ interface ProductReelProps {
   map: Array<any>;
 }
 
-const ProductsItems = [
-  {
-    images: {},
-    PeoductName: "Product-1",
-    label: "...",
-    price: "100$",
-  },
-  {
-    images: {},
-    PeoductName: "Product-2",
-    label: "...",
-    price: "100$",
-  },
-  {
-    images: {},
-    PeoductName: "Product-3",
-    label: "...",
-    price: "100$",
-  },
-  {
-    images: {},
-    PeoductName: "Product-4",
-    label: "...",
-    price: "100$",
-  },
-];
-
 const ProductReel = (props: ProductReelProps) => {
   const { title, subtitle, href, map } = props;
   return (
