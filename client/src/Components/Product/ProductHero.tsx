@@ -36,9 +36,9 @@ const ProductHero = ({ images, searchParams }: ProductHeroProps) => {
 
   return (
     <>
-      <section className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-[10px] h-[70vh] w-full overflow-hidden ">
+      <section className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-5 gap-[10px] h-[70vh] w-full overflow-hidden ">
         {/* Big Image */}
-        <main className="w-full overflow-hidden relative">
+        <main className="w-full overflow-hidden relative col-span-4">
           <div className="overflow-hidden">
             <Image
               layout="fill"
@@ -46,12 +46,12 @@ const ProductHero = ({ images, searchParams }: ProductHeroProps) => {
               src={selectedImage ? selectedImage.url : images[0].url}
               alt="Product image"
               loading="eager"
-              className="rounded-xl"
+              className="rounded-md"
             />
           </div>
         </main>
         {/* Small Images */}
-        <main className="w-full grid grid-cols-4 sm:grid-cols-4 md:grid-cols-2 gap-[10px] overflow-hidden ">
+        <main className="w-full grid grid-cols-4 sm:grid-cols-4 md:grid-cols-1 gap-[10px] overflow-hidden ">
           {smallImages.map((image: ImageData) => (
             <div
               key={image.id}
@@ -64,13 +64,13 @@ const ProductHero = ({ images, searchParams }: ProductHeroProps) => {
                 src={image.url}
                 alt="Product image"
                 loading="eager"
-                className="rounded-xl"
+                className="rounded-md"
               />
             </div>
           ))}
         </main>
         {/* modal knap */}
-        <div className="absolute right-0 bottom-0 p-2">
+        <div className="absolute left-0 bottom-0 p-2">
           <DragCloseDrawer/>
       </div>
       </section>
